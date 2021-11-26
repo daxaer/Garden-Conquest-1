@@ -40,12 +40,12 @@ public class Player : MonoBehaviour
     {
         if(GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
         {
-            rb.(rb.position + Axis.normalized * 10f * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + Axis.normalized * 10f * Time.fixedDeltaTime);
         }
     }
     void Jump()
     {
-        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno && TocandoPiso == true)
+        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno/* && TocandoPiso == true*/)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
