@@ -13,6 +13,8 @@ public class PlayerAim : MonoBehaviour
     int anguloActual;
     [SerializeField] GameObject flecha;
     public Disparar disparar;
+    int vida = 20;
+
 
     private void Update()
     {
@@ -68,5 +70,18 @@ public class PlayerAim : MonoBehaviour
     {
         poderActual = Mathf.Clamp(distancia, minimo, maximo);
         flecha.transform.localScale = new Vector2(poderActual/10 , 1);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("proyectile"))
+        {
+            vida = vida - 5;
+            Debug.Log(vida);
+            if (vida < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
 }

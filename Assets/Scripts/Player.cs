@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     InputController inputActions;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private int miTurno;
+    [SerializeField] private SpriteRenderer[] sprite;
+    [SerializeField] private Transform pie;
+    bool TocandoPiso;
 
     private void Awake()
     {
@@ -31,14 +34,18 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        TocandoPiso = Physics2D.OverlapCircle(pie.position, 1f, 1 << 6);
+    }
+    private void FixedUpdate()
+    {
         if(GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
         {
-            transform.Translate(Axis * 5F * Time.deltaTime);
+            rb.(rb.position + Axis.normalized * 10f * Time.fixedDeltaTime);
         }
     }
     void Jump()
     {
-        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
+        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno && TocandoPiso == true)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -47,15 +54,22 @@ public class Player : MonoBehaviour
     {
         if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+           for(int i = 0;i < sprite.Length; i++)
+           {
+                sprite[i].flipX = false;
+           }
         }
     }
     void Izquierda()
     {
         if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            for (int i = 0; i < sprite.Length; i++)
+            {
+                sprite[i].flipX = true;
+            }
         }
     }
     Vector2 Axis => inputActions.Gameplay.Axis.ReadValue<Vector2>();
+
 }
