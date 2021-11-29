@@ -13,19 +13,19 @@ public class PlayerAim : MonoBehaviour
     int anguloActual;
     [SerializeField] GameObject flecha;
     public Disparar disparar;
-    int vida = 20;
+    int vida = 100;
 
 
     private void Update()
     {
-        if(Input.GetMouseButton(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false && GameManager.Instance.GetMunicionCargada() == true)
+        if(Input.GetMouseButton(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false/* && GameManager.Instance.GetMunicionCargada() == true*/)
         {
             GameManager.Instance.SetApuntando(true);
             flecha.GetComponent<SpriteRenderer>().enabled = true;
             CalcularAngulo();
             CalcularPoder();
         }
-        else if(Input.GetMouseButtonUp(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false )
+        else if(Input.GetMouseButtonUp(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false/* && GameManager.Instance.GetMunicionCargada() == true*/)
         {
             GameManager.Instance.SetApuntando(false);
             GameManager.Instance.SetDisparando(true);

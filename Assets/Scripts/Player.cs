@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField, Range(1f, 10f)] float jumpForce = 5f;
+    [SerializeField] private float jumpForce = 300;
 
     InputController inputActions;
     [SerializeField] private Rigidbody2D rb;
@@ -70,4 +70,8 @@ public class Player : MonoBehaviour
 
     bool tocandoPiso => rb.IsTouching(groundFilter);
 
+    public Transform SetObjetivos()
+    {
+        return transform;
+    }
 }

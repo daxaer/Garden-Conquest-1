@@ -12,8 +12,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool apuntando = false;
     [SerializeField] private bool munisionCargada = false;
     [SerializeField] private Text tiempo;
+    public camara cam;
+    public Player[] jugadores;
     int time = 10;
-    public static GameManager Instance; 
+    public static GameManager Instance;
+    Transform objetivo;
 
     void Awake()
     {
@@ -50,6 +53,14 @@ public class GameManager : MonoBehaviour
     {
         munisionCargada = muncion;
     }
+    public void SetObjetivos(Transform objetivos)
+    {
+       objetivo = objetivos;
+    }
+    public Transform GetObjetivos()
+    {
+        return objetivo;
+    }
 
     public int GetProyectile()
     {
@@ -84,10 +95,14 @@ public class GameManager : MonoBehaviour
             puedoDisparar = true;
             if (Turno == 1)
             {
+                objetivo = jugadores[1].SetObjetivos();
+                cam.setCamara(objetivo);
                 Turno = 2;
             }
             else
             {
+                objetivo = jugadores[0].SetObjetivos();
+                cam.setCamara(objetivo);
                 Turno = 1;
             }
             disparando = false;
@@ -100,6 +115,6 @@ public class GameManager : MonoBehaviour
             tiempo.text = time.ToString();
             StartCoroutine("CambiarTurno");
         }
-
+        
     }
 }
