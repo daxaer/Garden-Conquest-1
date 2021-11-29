@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Proyectile : MonoBehaviour
 {
-    Rigidbody2D rb2D;
     public GameObject proyectile;
-    bool cambiarColor = true;
-    bool distancia = true;
+    Rigidbody2D rb2D;
+
     private void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -22,29 +21,5 @@ public class Proyectile : MonoBehaviour
     {
         GetComponent<Collider2D>().enabled = true;
         GetComponentInChildren<Collider2D>().enabled = true;
-    }
-    public void MouseIn()
-    {
-        //cambiarColor = true;
-        //if (cambiarColor && distancia)
-        //{
-        Debug.Log("Entre");
-            GetComponent<SpriteRenderer>().material.color = Color.red;
-        //}
-    }
-    public void MouseExit()
-    {
-        //cambiarColor = false;
-        //if (cambiarColor == false)
-        //{
-            GetComponent<SpriteRenderer>().material.color = Color.white;
-        //}
-    }
-    public void MouseClick()
-    {
-        if (cambiarColor /*&& distancia*/)
-        {
-            Destroy(gameObject);
-        }
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2626473592500145140}
   - component: {fileID: 3667073289970568428}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CheckDistancia
   m_TagString: Distancia
   m_Icon: {fileID: 0}
@@ -62,7 +62,8 @@ GameObject:
   - component: {fileID: -935446759077289583}
   - component: {fileID: 4143707704593115949}
   - component: {fileID: -4069004527263482308}
-  m_Layer: 0
+  - component: {fileID: -7393932340998682778}
+  m_Layer: 7
   m_Name: rama
   m_TagString: proyectile
   m_Icon: {fileID: 0}
@@ -490,8 +491,60 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: -7393932340998682778}
+          m_TargetAssemblyTypeName: proyectileInactivo, Assembly-CSharp
+          m_MethodName: MouseIn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: -7393932340998682778}
+          m_TargetAssemblyTypeName: proyectileInactivo, Assembly-CSharp
+          m_MethodName: MouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -7393932340998682778}
+          m_TargetAssemblyTypeName: proyectileInactivo, Assembly-CSharp
+          m_MethodName: MouseClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &-7393932340998682778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874153226560761293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134cc590a06152e4b8ef6b98e0c8a431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

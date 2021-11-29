@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class SeguirRaton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if(Input.GetMouseButton(1))
+        {
+            Vector3 posiciondelmouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            posiciondelmouse.z = 0;
+            transform.position = posiciondelmouse;
+        }
     }
 }

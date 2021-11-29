@@ -18,19 +18,20 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButton(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false)
+        if(Input.GetMouseButton(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false && GameManager.Instance.GetMunicionCargada() == true)
         {
             GameManager.Instance.SetApuntando(true);
             flecha.GetComponent<SpriteRenderer>().enabled = true;
             CalcularAngulo();
             CalcularPoder();
         }
-        else if(Input.GetMouseButtonUp(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false)
+        else if(Input.GetMouseButtonUp(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false )
         {
             GameManager.Instance.SetApuntando(false);
             GameManager.Instance.SetDisparando(true);
             disparar.DispararProyectile(poderActual);
-            flecha.GetComponent<SpriteRenderer>().enabled = false; 
+            flecha.GetComponent<SpriteRenderer>().enabled = false;
+            GameManager.Instance.SetMunicionCargada(false);
         }
     }
 

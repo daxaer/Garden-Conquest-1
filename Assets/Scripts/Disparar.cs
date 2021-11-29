@@ -10,5 +10,6 @@ public class Disparar : MonoBehaviour
     {
         GameObject instanciarProyectile = Instantiate(prefabProyectile[GameManager.Instance.GetProyectile()], spawn.transform.position, spawn.transform.rotation);
         instanciarProyectile.GetComponent<Proyectile>().Iniciar(poder);
+        instanciarProyectile.layer = gameObject.layer;
     }
 }

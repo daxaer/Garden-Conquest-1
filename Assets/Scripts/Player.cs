@@ -10,13 +10,15 @@ public class Player : MonoBehaviour
     InputController inputActions;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private int miTurno;
-    [SerializeField] private SpriteRenderer[] sprite;
-    [SerializeField] private Transform pie;
-    bool TocandoPiso;
+    [SerializeField] private Animator animator;
+    SpriteRenderer sprite;
+    [SerializeField] private ContactFilter2D groundFilter;
 
     private void Awake()
     {
         inputActions = new InputController();
+        sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -34,18 +36,18 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        TocandoPiso = Physics2D.OverlapCircle(pie.position, 1f, 1 << 6);
+
     }
     private void FixedUpdate()
     {
         if(GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
         {
-            rb.MovePosition(rb.position + Axis.normalized * 10f * Time.fixedDeltaTime);
+            rb.position += Axis.normalized * 10f * Time.fixedDeltaTime;
         }
     }
     void Jump()
     {
-        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno/* && TocandoPiso == true*/)
+        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno && tocandoPiso == true)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -54,22 +56,18 @@ public class Player : MonoBehaviour
     {
         if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
         {
-           for(int i = 0;i < sprite.Length; i++)
-           {
-                sprite[i].flipX = false;
-           }
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
     void Izquierda()
     {
         if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
         {
-            for (int i = 0; i < sprite.Length; i++)
-            {
-                sprite[i].flipX = true;
-            }
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }
     Vector2 Axis => inputActions.Gameplay.Axis.ReadValue<Vector2>();
+
+    bool tocandoPiso => rb.IsTouching(groundFilter);
 
 }
