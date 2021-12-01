@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     {
         if(GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
         {
-            rb.position += Axis.normalized * 10f * Time.fixedDeltaTime;
+            rb.position += Axis.normalized * 15f * Time.fixedDeltaTime;
         }
     }
     void Jump()
