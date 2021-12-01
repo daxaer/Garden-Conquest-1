@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     SpriteRenderer sprite;
     [SerializeField] private ContactFilter2D groundFilter;
+    
 
     private void Awake()
     {

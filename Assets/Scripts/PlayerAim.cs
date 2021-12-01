@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAim : MonoBehaviour
 {
@@ -13,19 +14,22 @@ public class PlayerAim : MonoBehaviour
     int anguloActual;
     [SerializeField] GameObject flecha;
     public Disparar disparar;
-    int vida = 100;
-
+    [SerializeField] private Image barradevida;
+    [SerializeField] private float vida = 100;
+    [SerializeField] private float vidaActual = 100;
+    [SerializeField] private string victoria = "";
+    [SerializeField] private Text Ganaste;
 
     private void Update()
     {
-        if(Input.GetMouseButton(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false/* && GameManager.Instance.GetMunicionCargada() == true*/)
+        if(Input.GetMouseButton(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false && GameManager.Instance.GetMunicionCargada() == true)
         {
             GameManager.Instance.SetApuntando(true);
             flecha.GetComponent<SpriteRenderer>().enabled = true;
             CalcularAngulo();
             CalcularPoder();
         }
-        else if(Input.GetMouseButtonUp(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false/* && GameManager.Instance.GetMunicionCargada() == true*/)
+        else if(Input.GetMouseButtonUp(0) && GameManager.Instance.GetTurn() == miTurno && GameManager.Instance.GetDisparando() == false && GameManager.Instance.GetMunicionCargada() == true)
         {
             GameManager.Instance.SetApuntando(false);
             GameManager.Instance.SetDisparando(true);
@@ -76,11 +80,12 @@ public class PlayerAim : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("proyectile"))
         {
-            vida = vida - 5;
-            Debug.Log(vida);
-            if (vida < 0)
+            vidaActual =  vidaActual - 5;
+            barradevida.fillAmount = vidaActual / vida;
+
+            if (vidaActual < 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
 

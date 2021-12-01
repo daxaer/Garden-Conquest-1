@@ -20,7 +20,7 @@ public class proyectileInactivo : MonoBehaviour
     public void MouseClick()
     {
         Debug.Log(GameManager.Instance.GetPuedoDisparar());
-        if (/*enRango &&*/ GameManager.Instance.GetPuedoDisparar() == true)
+        if (enRango && GameManager.Instance.GetPuedoDisparar() == true)
         {
             GameManager.Instance.SetPuedoDisparar(false);
             GameManager.Instance.SetMunicionCargada(true);
