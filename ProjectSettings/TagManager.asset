@@ -6,6 +6,7 @@ TagManager:
   tags:
   - proyectile
   - Distancia
+  - Muerte
   layers:
   - Default
   - TransparentFX

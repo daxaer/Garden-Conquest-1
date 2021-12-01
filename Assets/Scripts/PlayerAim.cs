@@ -89,6 +89,16 @@ public class PlayerAim : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        if (collision.gameObject.CompareTag("Muerte"))
+        {
+            vidaActual = vidaActual -20;
+            barradevida.fillAmount = vidaActual / vida;
 
+            if (vidaActual <= 0)
+            {
+                ganaste.text = victoria;
+                gameObject.SetActive(false);
+            }
+        }
     }
 }
