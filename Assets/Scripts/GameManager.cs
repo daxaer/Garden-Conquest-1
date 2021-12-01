@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool apuntando = false;
     [SerializeField] private bool munisionCargada = false;
     [SerializeField] private Text tiempo;
+    [SerializeField] private Text textoTiempo;
     public camara cam;
     public Player[] jugadores;
-    int time = 10;
+    int time =30;
     public static GameManager Instance;
     Transform objetivo;
 
@@ -91,7 +92,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if(time < 1)
         {
-            time = 10;
+            tiempo.color = Color.white;
+            time = 30;
             puedoDisparar = true;
             if (Turno == 1)
             {
@@ -111,9 +113,21 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            time--;
-            tiempo.text = time.ToString();
-            StartCoroutine("CambiarTurno");
+            if(time < 10)
+            {
+                time--;
+                tiempo.color = Color.red;
+                tiempo.text = time.ToString();
+                textoTiempo.color = Color.red;
+                StartCoroutine("CambiarTurno");
+            }
+            else
+            {
+                time--;
+                tiempo.text = time.ToString();
+                StartCoroutine("CambiarTurno");
+            }
+            
         }
         
     }
