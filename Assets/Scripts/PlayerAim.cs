@@ -15,10 +15,10 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] GameObject flecha;
     public Disparar disparar;
     [SerializeField] private Image barradevida;
-    [SerializeField] private float vida = 100;
-    [SerializeField] private float vidaActual = 100;
+    [SerializeField] private float vida = 20;
+    [SerializeField] private float vidaActual = 20;
     [SerializeField] private string victoria = "";
-    [SerializeField] private Text Ganaste;
+    [SerializeField] private Text ganaste;
 
     private void Update()
     {
@@ -83,8 +83,9 @@ public class PlayerAim : MonoBehaviour
             vidaActual =  vidaActual - 5;
             barradevida.fillAmount = vidaActual / vida;
 
-            if (vidaActual < 0)
+            if (vidaActual <= 0)
             {
+                ganaste.text = victoria;
                 gameObject.SetActive(false);
             }
         }
