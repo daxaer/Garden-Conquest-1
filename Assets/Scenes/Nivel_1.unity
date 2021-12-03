@@ -389,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2051900591869491003, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: m_Name
-      value: Abeja (1)
+      value: -Jugador2
       objectReference: {fileID: 0}
     - target: {fileID: 2051900591869491003, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: m_Layer
@@ -2450,7 +2450,7 @@ GameObject:
   - component: {fileID: 1048154893}
   - component: {fileID: 1048154892}
   m_Layer: 5
-  m_Name: TextoTiempo
+  m_Name: -TextoTiempo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3371,7 +3371,7 @@ GameObject:
   - component: {fileID: 1755107950}
   - component: {fileID: 1755107949}
   m_Layer: 5
-  m_Name: Tiempo
+  m_Name: -Tiempo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3900,7 +3900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2051900591869491003, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: m_Name
-      value: Abeja
+      value: -Jugador1
       objectReference: {fileID: 0}
     - target: {fileID: 2051900591869491003, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: m_Layer

@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        puedoDisparar = true;
         if (Instance == null) 
         {
             DontDestroyOnLoad(gameObject); 
@@ -31,8 +30,23 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); 
         }
-        StartCoroutine("CambiarTurno");
 
+    }
+    private void Start()
+    {
+        puedoDisparar = true;
+        StartCoroutine("CambiarTurno");
+      
+        cam = GameObject.Find("CM vcam1").GetComponent<camara>();
+    
+        textoTiempo = GameObject.Find("-Tiempo").GetComponent<Text>();
+ 
+ 
+        textoTiempo = GameObject.Find("-TextoTiempo").GetComponent<Text>();
+
+
+        jugadores[0] = GameObject.Find("-Jugador1").GetComponent<Player>();
+        jugadores[1] = GameObject.Find("-Jugador2").GetComponent<Player>();
     }
     public void SetProyectile(int id)
     {
