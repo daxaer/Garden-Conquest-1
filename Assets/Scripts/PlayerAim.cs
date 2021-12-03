@@ -19,6 +19,9 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private float vidaActual = 20;
     [SerializeField] private string victoria = "";
     [SerializeField] private Text ganaste;
+    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioClip golpe;
+    bool puedoRecibirDaño = true;
 
     private void Update()
     {
@@ -78,15 +81,18 @@ public class PlayerAim : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("proyectile"))
+        if (collision.gameObject.CompareTag("proyectile") && puedoRecibirDaño)
         {
+            puedoRecibirDaño = false;
+            StartCoroutine("Wait");
             vidaActual =  vidaActual - 5;
             barradevida.fillAmount = vidaActual / vida;
+            audio.clip = golpe;
+            audio.Play();
 
             if (vidaActual <= 0)
             {
-                ganaste.text = victoria;
-                gameObject.SetActive(false);
+                StartCoroutine("Muerte");
             }
         }
         if (collision.gameObject.CompareTag("Muerte"))
@@ -96,9 +102,18 @@ public class PlayerAim : MonoBehaviour
 
             if (vidaActual <= 0)
             {
-                gameObject.SetActive(false);
+                StartCoroutine("Muerte");
             }
         }
     }
-
+    IEnumerator Muerte()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(.2f);
+        puedoRecibirDaño = true;
+    }
 }
