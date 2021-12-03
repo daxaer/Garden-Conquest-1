@@ -96,9 +96,9 @@ public class PlayerAim : MonoBehaviour
 
             if (vidaActual <= 0)
             {
-                ganaste.text = victoria;
                 gameObject.SetActive(false);
             }
         }
     }
+
 }
