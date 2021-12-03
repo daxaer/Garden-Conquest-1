@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerAim : MonoBehaviour
@@ -21,6 +22,7 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private Text ganaste;
     [SerializeField] private AudioSource audio;
     [SerializeField] private AudioClip golpe;
+    [SerializeField] private AudioClip lose;
     [SerializeField] private Player jugador;
     bool puedoRecibirDaño = true;
 
@@ -94,6 +96,8 @@ public class PlayerAim : MonoBehaviour
 
             if (vidaActual <= 0)
             {
+                audio.clip = lose;
+                audio.Play();
                 StartCoroutine("Muerte");
             }
         }
@@ -104,6 +108,8 @@ public class PlayerAim : MonoBehaviour
 
             if (vidaActual <= 0)
             {
+                audio.clip = lose;
+                audio.Play();
                 StartCoroutine("Muerte");
             }
         }
@@ -111,7 +117,8 @@ public class PlayerAim : MonoBehaviour
     IEnumerator Muerte()
     {
         jugador.Muerto();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(4);
     }
     IEnumerator Wait()
     {

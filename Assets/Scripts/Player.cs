@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -15,7 +16,6 @@ public class Player : MonoBehaviour
     SpriteRenderer sprite;
     [SerializeField] private ContactFilter2D groundFilter;
     bool muerto = false;
-    
 
     private void Awake()
     {

@@ -300,6 +300,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
+      propertyPath: lose
+      value: 
+      objectReference: {fileID: 8300000, guid: 8a2baad7ad952a74fa804554fd3d1c29, type: 3}
+    - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: audio
       value: 
       objectReference: {fileID: 707398272}
@@ -3794,6 +3798,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
+      propertyPath: lose
+      value: 
+      objectReference: {fileID: 8300000, guid: 8a2baad7ad952a74fa804554fd3d1c29, type: 3}
     - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: audio
       value: 
