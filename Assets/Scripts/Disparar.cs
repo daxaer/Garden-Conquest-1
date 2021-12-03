@@ -58,7 +58,7 @@ public class Disparar : MonoBehaviour
     }
     IEnumerator CambiarCamara()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(8f);
         camaras.setCamara(transform);
     }
 }

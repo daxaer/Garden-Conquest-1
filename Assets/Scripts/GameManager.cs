@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text textoTiempo;
     public camara cam;
     public Player[] jugadores;
-    int time =30;
+    int time =20;
     public static GameManager Instance;
     Transform objetivo;
 
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         if(time < 1)
         {
             tiempo.color = Color.white;
-            time = 30;
+            time = 20;
             puedoDisparar = true;
             if (Turno == 1)
             {
