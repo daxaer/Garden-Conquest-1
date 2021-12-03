@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     SpriteRenderer sprite;
     [SerializeField] private ContactFilter2D groundFilter;
+    bool muerto = false;
     
 
     private void Awake()
@@ -34,38 +36,59 @@ public class Player : MonoBehaviour
         inputActions.Gameplay.Jump.performed += _ => Jump();
         inputActions.Gameplay.Derecha.performed += _ => Derecha();
         inputActions.Gameplay.Izquierda.performed += _ => Izquierda();
+        inputActions.Gameplay.Derecha.canceled += _ => DerechaCanceled();
+        inputActions.Gameplay.Izquierda.canceled += _ => IzquierdaCanceled();
     }
+
+    private void IzquierdaCanceled()
+    {
+        animator.SetBool("run", false);
+    }
+
+    private void DerechaCanceled()
+    {
+        animator.SetBool("run", false);
+    }
+
     private void Update()
     {
 
     }
     private void FixedUpdate()
     {
-        if(GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
+        if(GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno && muerto == false)
         {
             rb.position += Axis.normalized * 15f * Time.fixedDeltaTime;
         }
     }
     void Jump()
     {
-        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno && tocandoPiso == true)
+        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno && tocandoPiso == true && muerto == false)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
     void Derecha()
     {
-        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
+        animator.SetBool("run", true);
+        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno && muerto == false)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
     void Izquierda()
     {
-        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno)
+        animator.SetBool("run", true);
+        if (GameManager.Instance.GetApuntando() == false && GameManager.Instance.GetTurn() == miTurno && muerto == false)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+    }
+
+    public void Muerto()
+    {
+        muerto = true;
+        animator.SetBool("muerto", true);
     }
     Vector2 Axis => inputActions.Gameplay.Axis.ReadValue<Vector2>();
 

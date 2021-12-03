@@ -21,6 +21,7 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] private Text ganaste;
     [SerializeField] private AudioSource audio;
     [SerializeField] private AudioClip golpe;
+    [SerializeField] private Player jugador;
     bool puedoRecibirDaño = true;
 
     private void Update()
@@ -41,6 +42,7 @@ public class PlayerAim : MonoBehaviour
             GameManager.Instance.SetMunicionCargada(false);
         }
     }
+    
 
     private void Apuntar()
     {
@@ -108,8 +110,8 @@ public class PlayerAim : MonoBehaviour
     }
     IEnumerator Muerte()
     {
+        jugador.Muerto();
         yield return new WaitForSeconds(1f);
-        gameObject.SetActive(false);
     }
     IEnumerator Wait()
     {

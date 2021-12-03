@@ -312,6 +312,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
+      propertyPath: jugador
+      value: 
+      objectReference: {fileID: 1079381370}
+    - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: miTurno
       value: 2
       objectReference: {fileID: 0}
@@ -319,6 +323,10 @@ PrefabInstance:
       propertyPath: victoria
       value: Jugador 1 a ganado
       objectReference: {fileID: 0}
+    - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
+      propertyPath: animacion
+      value: 
+      objectReference: {fileID: 1079381373}
     - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: barradevida
       value: 
@@ -3799,9 +3807,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
+      propertyPath: jugador
+      value: 
+      objectReference: {fileID: 2016861920}
+    - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: victoria
       value: Jugador 2 a ganado
       objectReference: {fileID: 0}
+    - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
+      propertyPath: animacion
+      value: 
+      objectReference: {fileID: 2016861917}
     - target: {fileID: 2051900591869490944, guid: d664d3731582e764a9eff591d72670af, type: 3}
       propertyPath: barradevida
       value: 
